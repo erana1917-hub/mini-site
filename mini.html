@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mini and friends 🎈 | Kids Cartoon & Nursery Rhymes Channel</title>
+    
+    <!-- Google Fonts: Fredoka & Quicksand -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sky-soft': '#e0f2fe',
+                        'pink-soft': '#fce7f3',
+                        'accent-red': '#FF0000',
+                        'accent-hover': '#CC0000',
+                        'play-dark': '#1e293b',
+                    },
+                    fontFamily: {
+                        fredoka: ['Fredoka', 'cursive', 'sans-serif'],
+                        quicksand: ['Quicksand', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --primary-color: #FF0000;
+            --primary-hover: #CC0000;
+            --bg-sky: #e0f2fe;
+            --bg-pink: #fce7f3;
+            --text-main: #1e293b;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.6);
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text-main);
+            background: linear-gradient(135deg, var(--bg-sky) 0%, var(--bg-pink) 50%, #f0f9ff 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+
+        /* Glassmorphism Navigation & Cards */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 2px solid var(--glass-border);
+            box-shadow: 0 8px 32px 0 rgba(186, 230, 253, 0.35);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid rgba(255, 182, 193, 0.35);
+            box-shadow: 0 12px 30px -5px rgba(236, 72, 153, 0.12);
+        }
+
+        /* Floating Animations */
+        @keyframes floatCloud {
+            0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) translateX(8px) rotate(2deg); }
+        }
+
+        @keyframes floatStar {
+            0%, 100% { transform: translateY(0px) scale(1) rotate(0deg); }
+            50% { transform: translateY(-16px) scale(1.1) rotate(15deg); }
+        }
+
+        @keyframes pulseBtn {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4); }
+            50% { transform: scale(1.04); box-shadow: 0 0 20px 6px rgba(255, 0, 0, 0.25); }
+        }
+
+        .animate-cloud { animation: floatCloud 6s ease-in-out infinite; }
+        .animate-star { animation: floatStar 5s ease-in-out infinite; }
+        .animate-pulse-cta { animation: pulseBtn 2.8s infinite; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0f9ff;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f472b6;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+
+        /* Modal active state */
+        .modal-active {
+            display: flex !important;
+            animation: popIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="relative">
+
+    <!-- Floating Background Decor Elements -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute top-16 left-6 text-4xl sm:text-5xl opacity-40 animate-cloud">☁️</div>
+        <div class="absolute top-1/3 right-8 text-4xl sm:text-5xl opacity-40 animate-star">⭐</div>
+        <div class="absolute top-2/3 left-10 text-4xl sm:text-5xl opacity-30 animate-cloud">🎈</div>
+        <div class="absolute bottom-16 right-1/4 text-4xl sm:text-5xl opacity-40 animate-star">🎶</div>
+        <div class="absolute top-1/2 left-1/4 text-3xl opacity-25 animate-star">✨</div>
+    </div>
+
+    <!-- Fixed Glassmorphism Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="glass-nav mx-3 sm:mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 my-2 rounded-3xl">
+            <div class="flex items-center justify-between">
+                
+                <!-- Logo Branding -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-full bg-[var(--primary-color)] text-white flex items-center justify-center text-xl shadow-md group-hover:rotate-12 transition-transform">
+                        <i class="fa-solid fa-face-smile"></i>
+                    </div>
+                    <span class="font-heading text-2xl font-bold bg-gradient-to-r from-red-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
+                        mini and friends 🎈
+                    </span>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <div class="hidden md:flex items-center gap-8 font-heading font-semibold text-lg text-gray-700">
+                    <a href="#home" class="hover:text-[var(--primary-color)] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-1 after:bg-[var(--primary-color)] hover:after:w-full after:transition-all after:rounded-full">Home</a>
+                    <a href="#videos" class="hover:text-[var(--primary-color)] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-1 after:bg-[var(--primary-color)] hover:after:w-full after:transition-all after:rounded-full">Rhymes & Adventures</a>
+                    <a href="#about" class="hover:text-[var(--primary-color)] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-1 after:bg-[var(--primary-color)] hover:after:w-full after:transition-all after:rounded-full">About Us</a>
+                    <a href="#contact" class="hover:text-[var(--primary-color)] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-1 after:bg-[var(--primary-color)] hover:after:w-full after:transition-all after:rounded-full">Contact</a>
+                </div>
+
+                <!-- YouTube Subscribe CTA Button -->
+                <div class="hidden md:flex items-center">
+                    <a href="https://www.youtube.com/@Mini-ratttoo?sub_confirmation=1" target="_blank" rel="noopener noreferrer" 
+                       class="animate-pulse-cta bg-[var(--primary-color)] hover:bg-[var(--primary-hover)] text-white font-heading font-bold px-6 py-2.5 rounded-full flex items-center gap-2 shadow-md transition-all">
+                        <i class="fa-brands fa-youtube text-xl"></i>
+                        <span>Subscribe</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger Toggle Button -->
+                <button id="mobile-menu-btn" aria-label="Toggle Navigation Menu" class="md:hidden text-2xl p-2.5 rounded-2xl text-gray-700 hover:bg-pink-100 transition-colors focus:outline-none">
+                    <i class="fa-solid fa-bars" id="hamburger-icon"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobile-menu" class="hidden md:hidden mt-3 pt-3 border-t border-pink-200/80 space-y-2 pb-2 text-center font-heading">
+                <a href="#home" class="mobile-link block font-semibold text-lg py-2 hover:text-[var(--primary-color)] hover:bg-pink-50 rounded-2xl">Home</a>
+                <a href="#videos" class="mobile-link block font-semibold text-lg py-2 hover:text-[var(--primary-color)] hover:bg-pink-50 rounded-2xl">Rhymes & Adventures</a>
+                <a href="#about" class="mobile-link block font-semibold text-lg py-2 hover:text-[var(--primary-color)] hover:bg-pink-50 rounded-2xl">About Us</a>
+                <a href="#contact" class="mobile-link block font-semibold text-lg py-2 hover:text-[var(--primary-color)] hover:bg-pink-50 rounded-2xl">Contact</a>
+                <a href="https://www.youtube.com/@Mini-ratttoo?sub_confirmation=1" target="_blank" rel="noopener noreferrer" 
+                   class="inline-flex bg-[var(--primary-color)] text-white font-bold px-6 py-3 rounded-full items-center justify-center gap-2 w-full shadow-md mt-2">
+                    <i class="fa-brands fa-youtube text-xl"></i>
+                    <span>Subscribe on YouTube</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section (90vh height target) -->
+    <section id="home" class="relative min-h-[90vh] flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 z-10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left Hero Text Content -->
+            <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                
+                <!-- Channel Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 border border-sky-200 text-red-600 font-bold text-sm shadow-sm animate-cloud">
+                    <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping inline-block"></span>
+                    ✨ Official Channel for Kids & Toddlers
+                </div>
+
+                <!-- Main Heading -->
+                <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-800">
+                    Welcome to <br class="hidden sm:inline">
+                    <span class="bg-gradient-to-r from-red-600 via-pink-500 to-purple-600 bg-clip-text text-transparent">
+                        mini and friends! 🐭🎈
+                    </span>
+                </h1>
+
+                <!-- Channel Slogan & Intro -->
+                <p class="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto lg:mx-0 font-medium leading-relaxed">
+                    A joyful cartoon world for kids! Sing along with Milo, learn ABCs, explore fun rhymes, and play free learning games together!
+                </p>
+
+                <!-- Action CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <a href="#videos" class="w-full sm:w-auto bg-[var(--primary-color)] hover:bg-[var(--primary-hover)] text-white font-heading text-lg font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-red-200 flex items-center justify-center gap-3 transform hover:-translate-y-1 transition-all">
+                        <i class="fa-solid fa-circle-play text-2xl"></i>
+                        <span>Watch Rhymes</span>
+                    </a>
+                    
+                    <a href="https://www.youtube.com/@Mini-ratttoo?sub_confirmation=1" target="_blank" rel="noopener noreferrer" 
+                       class="w-full sm:w-auto bg-white hover:bg-pink-50 text-gray-800 font-heading text-lg font-bold px-8 py-4 rounded-full border-2 border-red-200 shadow-md flex items-center justify-center gap-3 transform hover:-translate-y-1 transition-all">
+                        <i class="fa-brands fa-youtube text-[var(--primary-color)] text-2xl"></i>
+                        <span>Subscribe on YouTube</span>
+                    </a>
+                </div>
+
+                <!-- Feature Pills -->
+                <div class="pt-6 flex flex-wrap justify-center lg:justify-start gap-4 text-sm font-semibold text-gray-700">
+                    <span class="flex items-center gap-2 bg-white/80 px-4 py-2 rounded-2xl border border-sky-100 shadow-sm">
+                        <i class="fa-solid fa-shield-cat text-pink-500 text-base"></i> 100% Kid Safe Content
+                    </span>
+                    <span class="flex items-center gap-2 bg-white/80 px-4 py-2 rounded-2xl border border-sky-100 shadow-sm">
+                        <i class="fa-solid fa-music text-sky-500 text-base"></i> Catchy Nursery Rhymes
+                    </span>
+                    <span class="flex items-center gap-2 bg-white/80 px-4 py-2 rounded-2xl border border-sky-100 shadow-sm">
+                        <i class="fa-solid fa-gamepad text-purple-500 text-base"></i> Fun Learning Games
+                    </span>
+                </div>
+            </div>
+
+            <!-- Right Hero Card Visual -->
+            <div class="lg:col-span-5 relative flex justify-center">
+                <div class="relative w-full max-w-md">
+                    <!-- Glow Accents -->
+                    <div class="absolute -top-6 -left-6 w-72 h-72 bg-sky-300/60 rounded-full mix-blend-multiply filter blur-2xl animate-cloud"></div>
+                    <div class="absolute -bottom-6 -right-6 w-72 h-72 bg-pink-300/60 rounded-full mix-blend-multiply filter blur-2xl animate-star"></div>
+                    
+                    <!-- Channel Mascot Card -->
+                    <div class="glass-card rounded-3xl p-6 relative z-10 text-center transform hover:scale-[1.02] transition-transform duration-300">
+                        <div class="relative rounded-2xl overflow-hidden mb-4 shadow-inner bg-gradient-to-br from-sky-200 via-pink-100 to-yellow-100 p-8 flex flex-col items-center justify-center min-h-[260px]">
+                            <div class="text-8xl mb-2 animate-cloud">🐭✨</div>
+                            <h3 class="font-heading text-2xl font-bold text-gray-800">mini and friends</h3>
+                            <p class="text-sm font-semibold text-red-600 bg-white/80 px-3 py-1 rounded-full mt-2 shadow-sm">@Mini-ratttoo</p>
+                        </div>
+                        
+                        <div class="flex items-center justify-between px-2 pt-2">
+                            <div class="text-left">
+                                <p class="text-xs text-gray-500 font-bold uppercase tracking-wider">Channel Category</p>
+                                <p class="font-heading font-semibold text-gray-800 text-base">Kids Cartoons & Rhymes</p>
+                            </div>
+                            <div class="bg-red-100 text-red-600 font-bold px-3.5 py-1.5 rounded-full text-xs flex items-center gap-1 shadow-sm">
+                                <i class="fa-solid fa-heart"></i> Loved by Kids
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Latest Rhymes & Adventures Section -->
+    <section id="videos" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 relative">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="bg-red-100 text-[var(--primary-color)] font-bold px-4 py-1.5 rounded-full text-sm inline-block mb-3 shadow-sm">
+                <i class="fa-brands fa-youtube mr-1 text-lg"></i> Official Videos from @Mini-ratttoo
+            </span>
+            <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800">
+                Latest Rhymes & Adventures 🎶
+            </h2>
+            <p class="text-gray-600 text-lg mt-3 font-medium">
+                Watch the newest cartoon shorts, nursery rhymes, and fun games uploaded directly from our channel!
+            </p>
+        </div>
+
+        <!-- Dynamic YouTube Grid -->
+        <div id="video-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Skeleton Loader -->
+            <div class="glass-card rounded-3xl overflow-hidden animate-pulse">
+                <div class="bg-gray-200 h-52 w-full"></div>
+                <div class="p-6 space-y-3">
+                    <div class="h-6 bg-gray-200 rounded w-3/4"></div>
+                    <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+                </div>
+            </div>
+            <div class="glass-card rounded-3xl overflow-hidden animate-pulse hidden md:block">
+                <div class="bg-gray-200 h-52 w-full"></div>
+                <div class="p-6 space-y-3">
+                    <div class="h-6 bg-gray-200 rounded w-3/4"></div>
+                    <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+                </div>
+            </div>
+            <div class="glass-card rounded-3xl overflow-hidden animate-pulse hidden lg:block">
+                <div class="bg-gray-200 h-52 w-full"></div>
+                <div class="p-6 space-y-3">
+                    <div class="h-6 bg-gray-200 rounded w-3/4"></div>
+                    <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Channel Direct Link CTA -->
+        <div class="text-center mt-12">
+            <a href="https://www.youtube.com/@Mini-ratttoo" target="_blank" rel="noopener noreferrer" 
+               class="inline-flex items-center gap-3 text-[var(--primary-color)] font-heading font-bold text-lg hover:text-[var(--primary-hover)] bg-white hover:bg-pink-50 px-8 py-3.5 rounded-full border-2 border-red-200 shadow-md hover:shadow-lg transition-all">
+                <i class="fa-brands fa-youtube text-2xl"></i>
+                <span>View Full Channel on YouTube (@Mini-ratttoo)</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Channel Section -->
+    <section id="about" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 relative">
+        <div class="glass-card rounded-3xl p-8 lg:p-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                
+                <!-- Left Visual Graphic -->
+                <div class="lg:col-span-5 text-center">
+                    <div class="relative inline-block">
+                        <div class="w-64 h-64 sm:w-72 sm:h-72 rounded-full bg-gradient-to-tr from-sky-300 via-pink-200 to-yellow-200 p-3 shadow-xl mx-auto">
+                            <div class="w-full h-full rounded-full bg-white flex flex-col items-center justify-center p-6 text-center">
+                                <span class="text-7xl mb-2 animate-cloud">🎨🐭</span>
+                                <span class="font-heading font-bold text-2xl text-gray-800">mini and friends</span>
+                                <span class="text-xs text-red-600 font-bold uppercase tracking-widest mt-1">@Mini-ratttoo</span>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-2 -right-2 bg-yellow-400 text-gray-900 font-heading font-bold px-4 py-2 rounded-2xl shadow-lg border-2 border-white animate-star">
+                            ✨ Cartoon World
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Description Content -->
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="bg-sky-100 text-sky-700 font-bold px-4 py-1.5 rounded-full text-sm inline-block shadow-sm">
+                        About Our Channel
+                    </span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-bold text-gray-800 leading-snug">
+                        Bringing Smiles, Rhymes & Cartoon Magic to Toddlers! 🌈
+                    </h2>
+                    <p class="text-gray-700 leading-relaxed text-base sm:text-lg">
+                        <strong>mini and friends</strong> (<a href="https://www.youtube.com/@Mini-ratttoo" target="_blank" class="text-red-600 underline font-bold">@Mini-ratttoo</a>) is an entertaining kids cartoon channel dedicated to fun learning, cute animations, playful nursery rhymes, and ABC cartoons designed to ignite young minds and make screen time wholesome and joyful.
+                    </p>
+
+                    <!-- Animated Stats Counters Container -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4" id="stats-section">
+                        <div class="bg-white/80 p-4 rounded-2xl border border-pink-100 text-center shadow-sm">
+                            <p class="font-heading text-2xl sm:text-3xl font-extrabold text-[var(--primary-color)] counter" data-target="1000">0</p>
+                            <p class="text-xs font-semibold text-gray-600 mt-1">Subscribers</p>
+                        </div>
+                        <div class="bg-white/80 p-4 rounded-2xl border border-sky-100 text-center shadow-sm">
+                            <p class="font-heading text-2xl sm:text-3xl font-extrabold text-sky-600 counter" data-target="50000">0</p>
+                            <p class="text-xs font-semibold text-gray-600 mt-1">Video Views</p>
+                        </div>
+                        <div class="bg-white/80 p-4 rounded-2xl border border-purple-100 text-center shadow-sm">
+                            <p class="font-heading text-2xl sm:text-3xl font-extrabold text-purple-600 counter" data-target="100">0</p>
+                            <p class="text-xs font-semibold text-gray-600 mt-1">Fun Uploads</p>
+                        </div>
+                        <div class="bg-white/80 p-4 rounded-2xl border border-amber-100 text-center shadow-sm">
+                            <p class="font-heading text-2xl sm:text-3xl font-extrabold text-amber-500">100%</p>
+                            <p class="text-xs font-semibold text-gray-600 mt-1">Kid-Safe Fun</p>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <a href="https://www.youtube.com/@Mini-ratttoo?sub_confirmation=1" target="_blank" rel="noopener noreferrer" 
+                           class="inline-flex items-center gap-2 bg-[var(--primary-color)] hover:bg-[var(--primary-hover)] text-white font-heading font-bold px-6 py-3 rounded-full shadow-md hover:scale-105 transition-all">
+                            <i class="fa-brands fa-youtube text-lg"></i>
+                            <span>Join the Mini & Friends Family</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto z-10 relative">
+        <div class="glass-card rounded-3xl p-8 sm:p-12">
+            <div class="text-center max-w-xl mx-auto mb-8">
+                <span class="bg-pink-100 text-pink-600 font-bold px-4 py-1.5 rounded-full text-sm inline-block mb-3 shadow-sm">
+                    💌 Get In Touch
+                </span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-bold text-gray-800">
+                    Send Us a Message!
+                </h2>
+                <p class="text-gray-600 text-base mt-2 font-medium">
+                    Have a rhyme request, parent feedback, or collaboration idea? We'd love to hear from you!
+                </p>
+            </div>
+
+            <!-- Form -->
+            <form id="contact-form" class="space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label for="name" class="block font-heading font-semibold text-gray-700 text-sm mb-2">Your Name</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-user absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                            <input type="text" id="name" required placeholder="e.g. Alex"
+                                   class="w-full pl-11 pr-4 py-3.5 rounded-2xl border-2 border-pink-100 focus:border-red-500 focus:ring-0 bg-white/90 text-gray-800 placeholder-gray-400 font-medium transition-all">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="email" class="block font-heading font-semibold text-gray-700 text-sm mb-2">Email Address</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                            <input type="email" id="email" required placeholder="e.g. alex@example.com"
+                                   class="w-full pl-11 pr-4 py-3.5 rounded-2xl border-2 border-pink-100 focus:border-red-500 focus:ring-0 bg-white/90 text-gray-800 placeholder-gray-400 font-medium transition-all">
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="subject" class="block font-heading font-semibold text-gray-700 text-sm mb-2">Subject Purpose</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-tag absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <select id="subject" class="w-full pl-11 pr-4 py-3.5 rounded-2xl border-2 border-pink-100 focus:border-red-500 focus:ring-0 bg-white/90 text-gray-800 font-medium transition-all appearance-none">
+                            <option value="Fan Mail">Fan Mail & Rhyme Suggestions 🎶</option>
+                            <option value="Sponsorship">Brand Collaboration & Sponsorship 🤝</option>
+                            <option value="General Inquiry">General Question ❓</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none text-xs"></i>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="message" class="block font-heading font-semibold text-gray-700 text-sm mb-2">Your Message</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-pen absolute left-4 top-4 text-gray-400"></i>
+                        <textarea id="message" rows="4" required placeholder="Write your friendly message here..."
+                                  class="w-full pl-11 pr-4 py-3.5 rounded-2xl border-2 border-pink-100 focus:border-red-500 focus:ring-0 bg-white/90 text-gray-800 placeholder-gray-400 font-medium transition-all"></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" 
+                        class="w-full bg-[var(--primary-color)] hover:bg-[var(--primary-hover)] text-white font-heading font-bold text-lg py-4 rounded-2xl shadow-lg hover:shadow-red-200 flex items-center justify-center gap-2 transform hover:-translate-y-0.5 transition-all">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Send Message to mini and friends</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white/80 border-t border-pink-200/60 pt-12 pb-8 px-4 sm:px-6 lg:px-8 z-10 relative">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 mb-8">
+            
+            <div class="md:col-span-5 space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-[var(--primary-color)] text-white flex items-center justify-center text-xl shadow-sm">
+                        <i class="fa-solid fa-face-smile"></i>
+                    </div>
+                    <span class="font-heading text-2xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent">
+                        mini and friends 🎈
+                    </span>
+                </div>
+                <p class="text-gray-600 text-sm max-w-sm">
+                    Creating delightful cartoon shorts, educational rhymes, and fun games for kids and toddlers everywhere!
+                </p>
+                <p class="text-xs text-gray-500 font-semibold">
+                    YouTube Channel: <a href="https://www.youtube.com/@Mini-ratttoo" target="_blank" class="text-red-600 hover:underline">@Mini-ratttoo</a>
+                </p>
+            </div>
+
+            <div class="md:col-span-3 space-y-3">
+                <h4 class="font-heading font-bold text-gray-800 text-lg">Quick Navigation</h4>
+                <ul class="space-y-2 text-sm text-gray-600 font-medium">
+                    <li><a href="#home" class="hover:text-[var(--primary-color)] transition-colors">Home</a></li>
+                    <li><a href="#videos" class="hover:text-[var(--primary-color)] transition-colors">Rhymes & Adventures</a></li>
+                    <li><a href="#about" class="hover:text-[var(--primary-color)] transition-colors">About Us</a></li>
+                    <li><a href="#contact" class="hover:text-[var(--primary-color)] transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="md:col-span-4 space-y-4">
+                <h4 class="font-heading font-bold text-gray-800 text-lg">Follow Mini & Friends</h4>
+                <div class="flex items-center gap-3">
+                    <a href="https://www.youtube.com/@Mini-ratttoo" target="_blank" aria-label="YouTube Channel" class="w-10 h-10 rounded-full bg-red-100 text-[var(--primary-color)] flex items-center justify-center hover:bg-[var(--primary-color)] hover:text-white transition-colors text-lg shadow-sm">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram" class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center hover:bg-pink-600 hover:text-white transition-colors text-lg shadow-sm">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com" target="_blank" aria-label="Facebook" class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors text-lg shadow-sm">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok" class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center hover:bg-purple-600 hover:text-white transition-colors text-lg shadow-sm">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-6 border-t border-gray-200/80 text-center text-xs text-gray-500 font-medium">
+            <p>© <span id="year"></span> mini and friends (@Mini-ratttoo). All rights reserved. Made with ❤️ for kids!</p>
+        </div>
+    </footer>
+
+    <!-- Video Modal Player -->
+    <div id="video-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="glass-card bg-white rounded-3xl w-full max-w-4xl overflow-hidden shadow-2xl relative">
+            <div class="flex items-center justify-between p-4 px-6 border-b border-gray-100 bg-pink-50">
+                <h3 id="modal-title" class="font-heading font-bold text-lg text-gray-800 truncate pr-4">Playing Video</h3>
+                <button id="close-modal-btn" aria-label="Close Video Modal" class="w-9 h-9 rounded-full bg-white text-gray-600 hover:text-red-600 hover:bg-red-50 flex items-center justify-center text-lg transition-colors focus:outline-none shadow-sm">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <div class="relative w-full aspect-video bg-black">
+                <iframe id="modal-iframe" class="w-full h-full" src="" title="YouTube Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-message" class="fixed bottom-6 right-6 z-50 bg-emerald-600 text-white font-heading font-semibold px-6 py-4 rounded-2xl shadow-xl transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-2xl"></i>
+        <span>Thank you! Your message was sent to mini and friends. 🌟</span>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Hamburger Menu Mobile Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                hamburgerIcon.classList.remove('fa-bars');
+                hamburgerIcon.classList.add('fa-xmark');
+            } else {
+                mobileMenu.classList.add('hidden');
+                hamburgerIcon.classList.remove('fa-xmark');
+                hamburgerIcon.classList.add('fa-bars');
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                hamburgerIcon.classList.remove('fa-xmark');
+                hamburgerIcon.classList.add('fa-bars');
+            });
+        });
+
+        // Video Modal Handler
+        const videoModal = document.getElementById('video-modal');
+        const modalIframe = document.getElementById('modal-iframe');
+        const modalTitle = document.getElementById('modal-title');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+
+        function openVideoModal(videoId, title) {
+            modalTitle.textContent = title || 'mini and friends video';
+            modalIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            videoModal.classList.add('modal-active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideoModal() {
+            videoModal.classList.remove('modal-active');
+            modalIframe.src = '';
+            document.body.style.overflow = 'auto';
+        }
+
+        closeModalBtn.addEventListener('click', closeVideoModal);
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) closeVideoModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && videoModal.classList.contains('modal-active')) closeVideoModal();
+        });
+
+        // Channel Specific Official Fallback Videos for @Mini-ratttoo
+        const miniAndFriendsOfficialVideos = [
+            {
+                id: 'FuLY5ZTvEvM',
+                title: 'Lets play free game with Milo 👀😙 #kidssongs #mouse #baby #kidsvideo #ryme #learning',
+                pubDate: 'Recent Upload',
+                thumbnail: 'https://img.youtube.com/vi/FuLY5ZTvEvM/hqdefault.jpg'
+            },
+            {
+                id: '_Fs0-QM-3Ac',
+                title: 'Hello! Kids lets start with Thik 🥹🐭🐭🐭 #kids #cartoons #abc #mouse',
+                pubDate: 'Recent Upload',
+                thumbnail: 'https://img.youtube.com/vi/_Fs0-QM-3Ac/hqdefault.jpg'
+            }
+        ];
+
+        // Parse YouTube Video ID from RSS Feed Item guid/link
+        function parseVideoId(item) {
+            if (item.guid && item.guid.includes('yt:video:')) {
+                return item.guid.replace('yt:video:', '');
+            }
+            if (item.link) {
+                const match = item.link.match(/(?:v=|\/shorts\/|\/embed\/|\/watch\?v=)([^&?/]+)/);
+                if (match && match[1]) return match[1];
+            }
+            return item.guid || '';
+        }
+
+        function renderVideoCards(videos) {
+            const grid = document.getElementById('video-grid');
+            grid.innerHTML = '';
+
+            if (!videos || videos.length === 0) {
+                videos = miniAndFriendsOfficialVideos;
+            }
+
+            videos.forEach(video => {
+                const card = document.createElement('div');
+                card.className = 'glass-card rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col group';
+                
+                const safeTitle = escapeHTML(video.title);
+
+                card.innerHTML = `
+                    <div class="relative aspect-video overflow-hidden cursor-pointer" onclick="openVideoModal('${video.id}', '${safeTitle.replace(/'/g, "\\'")}')">
+                        <img src="${video.thumbnail}" alt="${safeTitle}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://img.youtube.com/vi/${video.id}/hqdefault.jpg'">
+                        <div class="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                            <div class="w-14 h-14 rounded-full bg-[var(--primary-color)] text-white flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-play ml-1"></i>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-3 right-3 bg-red-600/90 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm shadow-sm">
+                            @Mini-ratttoo
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="text-xs font-bold text-pink-600 uppercase tracking-wider block mb-1">
+                                <i class="fa-regular fa-clock mr-1"></i> ${video.pubDate}
+                            </span>
+                            <h3 class="font-heading font-bold text-xl text-gray-800 line-clamp-2 leading-snug group-hover:text-[var(--primary-color)] transition-colors">
+                                ${safeTitle}
+                            </h3>
+                        </div>
+                        <button onclick="openVideoModal('${video.id}', '${safeTitle.replace(/'/g, "\\'")}')" 
+                                class="w-full bg-pink-100 hover:bg-[var(--primary-color)] text-[var(--primary-color)] hover:text-white font-heading font-bold py-3 rounded-2xl flex items-center justify-center gap-2 transition-all">
+                            <i class="fa-solid fa-circle-play"></i>
+                            <span>Watch Rhyme</span>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function escapeHTML(str) {
+            return str ? str.replace(/[&<>"']/g, function(m) {
+                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m];
+            }) : '';
+        }
+
+        // Fetch Live Channel RSS Feed strictly for `@Mini-ratttoo`
+        async function loadChannelVideos() {
+            // Channel handles RSS Feed URL parameter
+            const rssUrl = 'https://www.youtube.com/feeds/videos.xml?user=Mini-ratttoo';
+            const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                if (data.status === 'ok' && data.items && data.items.length > 0) {
+                    const fetchedVideos = data.items.slice(0, 3).map(item => {
+                        const vid = parseVideoId(item);
+                        return {
+                            id: vid,
+                            title: item.title || 'mini and friends rhyme video',
+                            pubDate: new Date(item.pubdate || item.pubDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }),
+                            thumbnail: `https://img.youtube.com/vi/${vid}/maxresdefault.jpg`
+                        };
+                    });
+                    renderVideoCards(fetchedVideos);
+                } else {
+                    renderVideoCards(miniAndFriendsOfficialVideos);
+                }
+            } catch (err) {
+                console.log('Fetching live RSS fallback for @Mini-ratttoo:', err);
+                renderVideoCards(miniAndFriendsOfficialVideos);
+            }
+        }
+
+        // Animated Counters for Stats
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+
+                const updateCounter = () => {
+                    current += step;
+                    if (current < target) {
+                        counter.textContent = Math.ceil(current).toLocaleString() + '+';
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target.toLocaleString() + '+';
+                    }
+                };
+                updateCounter();
+            });
+        }
+
+        // Intersection Observer for Triggering Counter Animation
+        const statsSection = document.getElementById('stats-section');
+        let animated = false;
+        if (statsSection) {
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && !animated) {
+                    animateCounters();
+                    animated = true;
+                }
+            }, { threshold: 0.5 });
+            observer.observe(statsSection);
+        }
+
+        // Form Submit Handler
+        const contactForm = document.getElementById('contact-form');
+        const toast = document.getElementById('toast-message');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            contactForm.reset();
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 4000);
+        });
+
+        // Initialize on DOM Ready
+        document.addEventListener('DOMContentLoaded', () => {
+            loadChannelVideos();
+        });
+    </script>
+</body>
+</html>
